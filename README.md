@@ -1,2 +1,3 @@
 # wallet-app-react-typescript
-Created with CodeSandbox
+
+A simple wallet tracker app built with react and typescript
