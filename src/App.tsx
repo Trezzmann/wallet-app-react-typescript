@@ -3,11 +3,12 @@ import Balance from "./components/Balance";
 import IncomeExpenses from "./components/IncomeExpenses";
 import TransactionList from "./components/TransactionList";
 import AddTransaction from "./components/AddTransaction";
+import AppStateProvider from "./context/AppState";
 import "./styles.css";
 
 export default function App() {
   return (
-    <div className="App">
+    <AppStateProvider>
       <Header />
       <div className="container">
         <Balance />
@@ -15,6 +16,6 @@ export default function App() {
         <TransactionList />
         <AddTransaction />
       </div>
-    </div>
+    </AppStateProvider>
   );
 }
