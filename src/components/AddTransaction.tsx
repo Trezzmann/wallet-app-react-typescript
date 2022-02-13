@@ -1,18 +1,50 @@
+import { ChangeEvent, SyntheticEvent, useState } from "react";
+import { useContext } from "react";
+import { AppContext } from "../context/AppState";
+
 export default function AddTransaction() {
+  const { addTransaction } = useContext(AppContext);
+
+  const [text, setText] = useState<string>("");
+  const [amount, setAmount] = useState<number>(0);
+  function handleSubmit(e: SyntheticEvent) {
+    e.preventDefault();
+    const newTransaction = {
+      id: Math.floor(Math.random() * 100000),
+      text,
+      amount
+    };
+    addTransaction(newTransaction);
+    console.log(newTransaction);
+  }
   return (
     <>
       <h3>Add new transaction</h3>
-      <form id="form">
+      <form onSubmit={handleSubmit}>
         <div className="form-control">
           <label htmlFor="text">Text</label>
-          <input type="text" id="text" placeholder="Enter text..." />
+          <input
+            type="text"
+            value={text}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setText(e.target.value)
+            }
+            placeholder="Enter text..."
+          />
         </div>
         <div className="form-control">
           <label htmlFor="amount">
             Amount <br />
             (negative - expense, positive - income)
           </label>
-          <input type="number" id="amount" placeholder="Enter amount..." />
+          <input
+            value={amount}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setAmount(e.target.valueAsNumber)
+            }
+            type="number"
+            placeholder="Enter amount..."
+          />
         </div>
         <button className="btn">Add transaction</button>
       </form>
