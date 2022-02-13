@@ -1,9 +1,8 @@
-import { Dispatch } from "react";
-
 export interface AppStateInterface {
   transactions: { id: number; text: string; amount: number }[];
   addTransaction: (item: Transaction) => void;
-  dispatch?: Dispatch<any>;
+  deleteTransaction: (id: number) => void;
+  // dispatch?: Dispatch<any>;
 }
 
 export interface Action {

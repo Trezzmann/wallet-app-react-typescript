@@ -10,7 +10,7 @@ const initState = {
     { id: 4, text: "Camera", amount: 150 }
   ],
   addTransaction: () => {},
-  dispatch: () => {}
+  deleteTransaction: () => {}
 };
 
 export const AppContext = createContext<AppStateInterface>(initState);
@@ -27,8 +27,18 @@ export default function AppStateProvider({
       payload: item
     });
   }
+
+  function deleteTransaction(id: number) {
+    dispatch({
+      type: "DELETE_TRANSACTION",
+      payload: id
+    });
+  }
+
   return (
-    <AppContext.Provider value={{ ...state, addTransaction }}>
+    <AppContext.Provider
+      value={{ ...state, addTransaction, deleteTransaction }}
+    >
       {children}
     </AppContext.Provider>
   );

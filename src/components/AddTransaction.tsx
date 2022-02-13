@@ -15,7 +15,8 @@ export default function AddTransaction() {
       amount
     };
     addTransaction(newTransaction);
-    console.log(newTransaction);
+    setAmount(0);
+    setText("");
   }
   return (
     <>
@@ -39,9 +40,9 @@ export default function AddTransaction() {
           </label>
           <input
             value={amount}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setAmount(e.target.valueAsNumber)
-            }
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+              if (e.target.value) setAmount(e.target.valueAsNumber);
+            }}
             type="number"
             placeholder="Enter amount..."
           />
