@@ -1,3 +1,3 @@
 export default function Header() {
-  return <h2>Expense Tracker</h2>;
+  return <h2>My Wallet Tracker</h2>;
 }
