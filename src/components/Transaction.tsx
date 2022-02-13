@@ -1,7 +1,17 @@
-export default function Transaction() {
+import { Transaction } from "../Interfaces";
+
+export default function TransactionItem({
+  transaction
+}: {
+  transaction: Transaction;
+}) {
+  const sign = transaction.amount < 0 ? "-" : "+";
   return (
-    <li className="minus">
-      Cash <span>-$400</span>
+    <li className={transaction.amount < 0 ? "minus" : "plus"}>
+      {transaction.text}{" "}
+      <span>
+        {sign}${Math.abs(transaction.amount)}
+      </span>
       <button className="delete-btn">x</button>
     </li>
   );
